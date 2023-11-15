@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"qiandaodog/src/models"
+	"qiandaodog/src/models/back"
 	"strings"
 )
 
@@ -46,15 +46,15 @@ func main() {
 		}
 		switch CookieBool[0] {
 		case `"v2ex"=`: //V2EX
-			c := &models.V2exCookie{}
+			c := &back.V2exCookie{}
 			c.Cookies = CookieBool[1]
 			c.SetV2ex()
 		case `"163music"=`: //网易云音乐
-			c := &models.Music163Cookie{}
+			c := &back.Music163Cookie{}
 			c.Cookies = CookieBool[1]
 			c.SetMusic163()
 		case `"chh"=`: //CHH
-			c := &models.ChhCookie{}
+			c := &back.ChhCookie{}
 			c.Cookies = CookieBool[1]
 			c.SetChh()
 		}

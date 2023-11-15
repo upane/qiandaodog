@@ -29,6 +29,7 @@ jobs:
         env:
           v2ex: ${{ secrets.v2ex }}
           chh: ${{ secrets.chh }}
+          hifi: ${{ secrets.hifi }}
         run: |
           cd src
           pip install --upgrade pip

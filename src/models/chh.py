@@ -1,6 +1,9 @@
 import requests
 
-class Chh:
+from models.BaseSigner import BaseSigner
+
+
+class Chh(BaseSigner):
     def __init__(self, cookies):
         self.cookies = cookies
         self.url = ""

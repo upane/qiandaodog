@@ -2,17 +2,20 @@ import os
 
 from models.v2ex import V2ex
 from models.chh import Chh
+from models.hifi import Hifini
 
-if __name__ == '__main__':
-    # v2ex_cookie = sys.argv[1]
-    # chh_cookie = sys.argv[2]
 
-    v2ex_cookie = os.environ["v2ex"]
-    chh_cookie = os.environ["chh"]
 
-    sign_v2ex = V2ex(v2ex_cookie)
+def main():
+
+    sign_v2ex = V2ex(os.environ["v2ex"])
     sign_v2ex.sign_event()
 
-    sign_chh = Chh(chh_cookie)
+    sign_chh = Chh(os.environ["chh"])
     sign_chh.sign_event()
 
+    hifini = Hifini(os.environ["hifi"])
+    hifini.sign_event()
+
+if __name__ == '__main__':
+    main()

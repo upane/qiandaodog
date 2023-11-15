@@ -1,10 +1,9 @@
-package models
+package back
 
 import (
 	"io"
 	"log"
 	"net/http"
-	"qiandaodog/src/models/back"
 )
 
 type V2exCookie struct {
@@ -20,13 +19,13 @@ func (c *V2exCookie) SetV2ex() {
 		log.Println("打开V2EX失败!")
 		return
 	}
-	html := back.Regexp2(c.HtmlBody, `(<input type="button" class="super normal button" value="领取 X 铜币" onclick="location.href = '[^']+|每日登录奖励已领取)`)
+	html := Regexp2(c.HtmlBody, `(<input type="button" class="super normal button" value="领取 X 铜币" onclick="location.href = '[^']+|每日登录奖励已领取)`)
 	if html == `每日登录奖励已领取` {
 		log.Println("V2ex	每日登录奖励已领取过")
 	} else if html == "" {
 		log.Println("V2EX	未登录")
 	} else {
-		c.Url = "https://www.v2ex.com" + back.Regexp2(html, `[^']+$`)
+		c.Url = "https://www.v2ex.com" + Regexp2(html, `[^']+$`)
 		err := c.GetV2ex()
 		if err != nil {
 			log.Println("V2EX	签到失败")

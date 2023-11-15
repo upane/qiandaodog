@@ -1,7 +1,10 @@
 import requests
 import re
 
-class V2ex:
+from models.BaseSigner import BaseSigner
+
+
+class V2ex(BaseSigner):
     def __init__(self, cookies):
         self.cookies = cookies
         self.url = ""
