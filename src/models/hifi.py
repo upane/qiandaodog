@@ -21,11 +21,12 @@ class Hifini(BaseSigner):
             "x-requested-with": "XMLHttpRequest",
             "accept": "text/plain, */*; q=0.01",
             "accept-encoding": "gzip, deflate, br",
-            "accept-language": "zh-CN,zh;q=0.9"
+            "accept-language": "zh-CN,zh;q=0.9",
+            "Cookie": self.cookies
         }
         for i in range(1):
             try:
-                response = requests.post(url=self.SIGN_IN_URL, headers=headers, cookies=self.cookies,  verify=False)
+                response = requests.post(url=self.SIGN_IN_URL, headers=headers,  verify=False)
                 print(response.json()["message"])
             except Exception as e:
                 print(e)
