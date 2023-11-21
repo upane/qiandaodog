@@ -2,12 +2,13 @@ name: qiandao
 
 on:
   schedule:
-    - cron: 5 0 * * *
+    - cron: '30 16 * * *'
   watch:
     types: started
   push:
     branches: [ "master" ]
   workflow_dispatch:
+
 
 jobs:
   build:
@@ -19,7 +20,6 @@ jobs:
         run: |
           sudo -E apt-get -qq update
           sudo -E apt-get install zsh -y
-
       - name: 初始化Python
         uses: actions/setup-python@v4
         with:
